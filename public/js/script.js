@@ -64,7 +64,7 @@ window.onscroll = () => {
   /*================ typed js =======================*/
 
     const typed = new Typed('.multiple-text', {
-        strings: ['Graphic Desingner', 'Apps Developer', 'Web Developer'],
+        strings: ['Graphic Designer', 'Apps Developer', 'Web Developer'],
         typeSpeed: 100,
         backSpeed: 100, 
         backDelay: 1000,
@@ -72,12 +72,9 @@ window.onscroll = () => {
     } )
   
 
-/* ======================== dark light mode  ================================*/// Step 1: Initialize EmailJS with your Public Key
-// Step 1: Initialize EmailJS with your public key
+/* ======================== email js ================================*/
 
-// 
-
-emailjs.init("pyheYxKkwMWxmrgP3");
+ emailjs.init("yheYxKkwMWxmrgP3");  // আপনার EmailJS পাবলিক কী দিয়ে প্রতিস্থাপন করুন
 
 function sendMessage() {
     const serviceId = "alom_123";
@@ -94,7 +91,7 @@ function sendMessage() {
     emailjs.send(serviceId, templateId, params)
         .then(res => {
             alert("Thank you, " + params["sendName"] + ". Your message has been sent successfully.");
-            document.getElementById("contact-form").reset(); // ফর্ম ক্লিয়ার করা
+            document.getElementById("contact-form").reset();
         })
         .catch(err => {
             alert("Failed to send message. Please try again later.");

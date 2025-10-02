@@ -17,8 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { emailJsKey: process.env.EMAILJS_PUBLIC_KEY });
 });
+
 
 app.get("/product", (req, res) => {
   res.render("product");
@@ -39,9 +40,7 @@ app.get("/aboutme", (req, res) => {
 
 
 /////evry root
-app.get('', (req, res) => {
-  res.redirect('/');
-});
+app.get('', (req, res) => res.redirect('/'));
 
 // Nodemailer transporter
 const transporter = nodemailer.createTransport({

@@ -1,4 +1,4 @@
-emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+emailjs.init("EMAILJS_PUBLIC_KEY");
 
 const orderButtons = document.querySelectorAll(".order-btn");
 
