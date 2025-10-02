@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Products</title>
+
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Razorpay -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // পরিবর্তন করুন আপনার Public Key
+</script>
+
+<style>
+:root {
+    --bg:#1f242d;
+    --card-bg:#323946;
+    --main:#0ef;
+    --text:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
+body{background:var(--bg);color:var(--text);}
+.container{width:90%;margin:0 auto;padding:3rem 0;}
+h2{text-align:center;font-size:2.5rem;margin-bottom:2rem;color:var(--main);}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.card{background:var(--card-bg);padding:1.8rem;border-radius:1.2rem;display:flex;flex-direction:column;align-items:center;transition:0.3s;box-shadow:0 0 1rem rgba(0,0,0,0.5);}
+.card:hover{transform:scale(1.05);box-shadow:0 0 1.5rem var(--main);}
+.card i{font-size:3rem;color:var(--main);margin-bottom:1rem;}
+.card h3{margin-bottom:0.8rem;text-align:center;}
+.card p{text-align:center;font-size:0.95rem;margin-bottom:1rem;}
+.card strong{font-size:1.1rem;margin-bottom:1rem;}
+.card button{padding:0.6rem 1rem;border:none;border-radius:50px;background:var(--main);color:var(--bg);cursor:pointer;transition:0.3s;}
+.card button:hover{background:#0bf;color:#fff;}
+/* Modal */
+#orderModal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:none;justify-content:center;align-items:center;z-index:999;}
+.modal-content{background:var(--card-bg);padding:2rem;border-radius:1rem;width:90%;max-width:500px;position:relative;}
+.modal-content h3{text-align:center;margin-bottom:1rem;color:var(--main);}
+.modal-content input, .modal-content textarea{width:100%;padding:0.8rem;margin:0.5rem 0;border-radius:0.5rem;border:none;background:#1a1e28;color:#fff;}
+.modal-content button{margin-top:1rem;width:100%;padding:0.8rem;border:none;border-radius:50px;background:var(--main);color:var(--bg);cursor:pointer;}
+.modal-content #closeModal{position:absolute;top:10px;right:15px;font-size:1.5rem;cursor:pointer;}
+@media(max-width:992px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.product-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Our Products</h2>
+<div class="product-grid" id="productGrid">
+<!-- Product cards will be injected here -->
+</div>
+</div>
+
+<!-- Modal -->
+<div id="orderModal">
+  <div class="modal-content">
+    <span id="closeModal">&times;</span>
+    <h3>Order Product</h3>
+    <input type="text" id="customerName" placeholder="Your Name" required>
+    <input type="email" id="customerEmail" placeholder="Your Email" required>
+    <input type="text" id="formTitle" readonly>
+    <textarea id="customerDetails" placeholder="Additional Details"></textarea>
+    <input type="hidden" id="formPrice">
+    <button id="payNowBtn">Pay Now</button>
+    <button id="payLaterBtn">Pay Later</button>
+  </div>
+</div>
+
+<script>
+const products = [
+  // Web Apps
+  {title:"Web Dashboard", desc:"Responsive web dashboard with analytics & charts.", price:12000, icon:"fa-laptop-code"},
+  {title:"E-commerce Web", desc:"Full shopping platform with payment integration.", price:15000, icon:"fa-shop"},
+  {title:"Blog Website", desc:"SEO-friendly blog website with CMS & modern design.", price:10000, icon:"fa-blog"},
+  {title:"Portfolio Website", desc:"Personal portfolio site with gallery & contact form.", price:9000, icon:"fa-user-astronaut"},
+  {title:"Booking Web App", desc:"Appointment booking with calendar & notifications.", price:14500, icon:"fa-calendar-check"},
+  {title:"Membership Web App", desc:"Manage memberships and premium access.", price:13500, icon:"fa-id-badge"},
+  {title:"Education Platform", desc:"Online learning website with courses & quizzes.", price:15500, icon:"fa-graduation-cap"},
+  {title:"Real Estate Web", desc:"Property listings, filters, and inquiry forms.", price:16000, icon:"fa-building"},
+  {title:"Restaurant Web", desc:"Food ordering and menu showcase website.", price:13000, icon:"fa-utensils"},
+  {title:"Event Website", desc:"Event showcase with registration & ticketing.", price:12500, icon:"fa-calendar-day"},
+  // Mobile Apps
+  {title:"Task Manager App", desc:"Cross-platform app for tasks & reminders.", price:18000, icon:"fa-android"},
+  {title:"iOS Fitness App", desc:"Track workouts, diet, and progress.", price:20000, icon:"fa-apple"},
+  {title:"Chat App", desc:"Real-time messaging with media sharing.", price:22000, icon:"fa-comment"},
+  {title:"Mobile E-commerce App", desc:"Complete shopping app with cart & checkout.", price:25000, icon:"fa-cart-shopping"},
+  {title:"Travel Guide App", desc:"Explore destinations with guides & maps.", price:21000, icon:"fa-map-location-dot"},
+  {title:"Food Delivery App", desc:"Order food and track delivery in real-time.", price:23000, icon:"fa-burger"},
+  {title:"Event Planner App", desc:"Plan and manage events efficiently.", price:19500, icon:"fa-calendar-week"},
+  {title:"Finance Tracker App", desc:"Track expenses, budgets, and goals.", price:18500, icon:"fa-wallet"},
+  {title:"Social Media App", desc:"Connect and share with friends.", price:24000, icon:"fa-users"},
+  {title:"Graphic Design App", desc:"Design tool for banners, logos & visuals.", price:16500, icon:"fa-paintbrush"},
+];
+
+const grid = document.getElementById("productGrid");
+products.forEach((p)=>{
+  const card = document.createElement("div");
+  card.className="card";
+  card.innerHTML=`<i class="fa-solid ${p.icon}"></i>
+  <h3>${p.title}</h3>
+  <p>${p.desc}</p>
+  <strong>₹${p.price}</strong>
+  <button class="order-btn">Order Now</button>`;
+  grid.appendChild(card);
+});
+
+// Modal functionality
+const modal = document.getElementById("orderModal");
+const closeModal = document.getElementById("closeModal");
+document.querySelectorAll(".order-btn").forEach((btn,index)=>{
+  btn.addEventListener("click",()=>{
+    const product = products[index];
+    document.getElementById("formTitle").value = product.title;
+    document.getElementById("formPrice").value = product.price;
+    modal.style.display="flex";
+  });
+});
+closeModal.onclick = ()=> modal.style.display="none";
+
+// Pay Later via EmailJS
+document.getElementById("payLaterBtn").addEventListener("click",()=>{
+  const name=document.getElementById("customerName").value;
+  const email=document.getElementById("customerEmail").value;
+  const title=document.getElementById("formTitle").value;
+  const price=document.getElementById("formPrice").value;
+  const details=document.getElementById("customerDetails").value;
+
+  if(!name||!email){alert("Fill name & email"); return;}
+
+  emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+    sendName:name,
+    sendEmail:email,
+    sendTitle:title,
+    sendPrice:price,
+    sendDetails:details
+  }).then(res=>{
+    alert("Order received! You can pay later. Details sent via EmailJS.");
+    modal.style.display="none";
+  }).catch(err=>{alert("Failed to send order.");console.error(err);});
+});
+
+// Pay Now via Razorpay
+document.getElementById("payNowBtn").addEventListener("click",()=>{
+  const name=document.getElementById("customerName").value;
+  const email=document.getElementById("customerEmail").value;
+  const title=document.getElementById("formTitle").value;
+  const price=document.getElementById("formPrice").value;
+  const details=document.getElementById("customerDetails").value;
+
+  if(!name||!email){alert("Fill name & email"); return;}
+
+  var options = {
+    "key": "YOUR_RAZORPAY_KEY", 
+    "amount": price*100, 
+    "currency": "INR",
+    "name": title,
+    "description": details,
+    "handler": function (response){
+      alert("Payment successful! ID: " + response.razorpay_payment_id);
+      emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+        sendName:name,
+        sendEmail:email,
+        sendTitle:title,
+        sendPrice:price,
+        sendDetails:details+"\nPayment ID:"+response.razorpay_payment_id
+      });
+      modal.style.display="none";
+    },
+    "prefill":{"name":name,"email":email},
+    "theme":{"color":"#0ef"}
+  };
+  var rzp1 = new Razorpay(options);
+  rzp1.open();
+});
+</script>
+
+</body>
+</html>

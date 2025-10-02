@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mk Hirenest </title>
+    <link rel="stylesheet" href="/style.css">
+    <!-- boxicons -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- -->
+
+<!-- scroll revall  -->
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!-- emai js  -->
+ 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+
+
+
+    <!-- boxicons -->
+
+</head>
+<body>
+    <!-- hedaer desing -->
+     <header class="header">
+        <a href="#" > <img class="logo" src="\image\logo.png" alt=""></a>
+
+        <i class='bx  bx-menu' id="menu-icon" ></i> 
+
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="/product">Products</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </nav>
+     </header>
+
+     <!-- home section desing  -->
+
+     <section class="home" id="home">
+        </div>
+        <div class="home-content">
+            <h3>Hello It's Me </h3>
+            <h1>Mokibul Alom</h1>
+            <h3>And I'm a <span class="multiple-text"></span></h3>
+            <p>I am a Passionate Freelancer Dedicated to Creative Excellence
+
+           Hello! I’m Md Mokibul Alom, a dedicated freelancer with a deep passion for transforming 
+           ideas into impactful digital experiences. Whether it's designing stunning graphics, developing
+            responsive websites, or building feature-rich mobile applications — I take pride in delivering 
+            high-quality work tailored to each client’s unique vision.
+
+           With a strong commitment to creativity, precision, and timely delivery,
+           I have collaborated with clients across various industries to bring their
+            concepts to life. Every project I take on is not just work — it’s a piece 
+            of art shaped with love, care, and professionalism.
+
+           Let’s work together and create something extraordinary.
+
+           Chai le ami ei paragraph-er shortcut version, bangla version, ba portfoli.</p> 
+        
+                <div class="cocial-media">
+                 <a href="https://www.facebook.com/share/1CXFGghhn8/"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://youtube.com/@tibrota?si=ibmKSbCPXTGQn2IF"><i class="fa-brands fa-square-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+                </div>
+               <a href="/aboutme" class="btn">Red More</a>
+             </div>
+              <div class="home-img">
+              <img src="image\mokibul1.png" alt="">
+        </div>
+     </section>
+
+     <!-- abaut section desing  -->
+
+     <section class="about" id="about">
+        <div class="about-img">
+            <img src="image\mokibul2.png" alt="">
+        </div>
+
+        <div class="about-content">
+            <h2 class="heading">About <span>Me</span></h2>
+            <h3>Frontend Developer</h3>
+            <p>I’m a multi-skilled creative professional with a passion for building seamless digital experiences. As a Web Developer, I craft responsive and modern websites that blend performance with elegant design. My work as a Graphic Designer adds a visual edge — turning ideas into eye-catching designs that speak louder than words. On top of that, I develop functional and user-friendly mobile apps, turning concepts into smooth, real-world solutions.
+<br>
+Whether it’s code, design, or mobile innovation — I bring clarity, creativity, and care into every project I touch.
+
+</p>
+            <a href="/aboutme" class="btn">Red More</a>
+        </div>
+     </section>
+
+
+
+     <!-- services section desing -->
+
+     <section class="services" id="services">
+         <h2 class="heading">Our <span>Services</span></h2>
+
+          <div class="services-container">
+            <div class="services-box">
+                <i class="fa-solid fa-code"></i>
+                <h3> Web Development </h3>
+                <p>I build modern, responsive websites using HTML, CSS, JavaScript, and frameworks like React. My goal is to create clean, user-friendly web experiences that work across all devices.</p>
+
+                 <a href="aboutme.html" class="btn">Red More</a>
+            </div>
+            <div class="services-box">
+                <i class="fa-solid fa-paintbrush"></i>
+                <h3> Graphic Desing </h3>
+               <p>I design creative visuals for branding, social media, and print using tools like Photoshop, Illustrator, and Canva. I focus on clean, impactful, and meaningful design.</p>
+                 <a href="aboutme.html" class="btn">Red More</a>
+            </div>
+            <div class="services-box">
+             <i class="fa-brands fa-app-store-ios"></i>
+                <h3> Apps Developer </h3>
+                <p>I develop mobile apps with Flutter and React Native, focusing on performance, usability, and sleek design. I enjoy turning ideas into interactive, real-world solutions.</p>
+                 <a href="aboutme.html" class="btn">Red More</a>
+            </div>
+            
+        </div>  
+
+    </section>
+
+
+
+
+<!-- Order Modal -->
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Place Your Order</h2>
+    <form id="order-form">
+        <input type="hidden" id="productName" name="productName">
+        <input type="text" id="custName" placeholder="Your Name" required>
+        <input type="email" id="custEmail" placeholder="Your Email" required>
+        <textarea id="custDetails" placeholder="Describe your requirements"></textarea>
+        <button type="submit" class="btn">Proceed to Pay</button>
+    </form>
+  </div>
+</div>
+
+
+    <!-- portfolio section desing  -->
+
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading"> Last <span>Project</span></h2>
+
+        <div class="portfolio-container">
+
+            <div class="portfolio-box">
+                <img src="image/house1.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Web Desing </h4>
+                    <p>Looking for a dream home in Mumbai?
+                          We’ve built a real estate platform where your search ends and your new journey begins.
+                          Choose your perfect space — and when you’re ready, we’ll help you come home.</p>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+             
+            <div class="portfolio-box">
+                <img src="image/house1.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Web Desing </h4>
+                    <p>Coming Soon!</p>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+             
+            <div class="portfolio-box">
+                <img src="image/house1.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Web Desing </h4>
+                    <p> Coming Soon</p>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+             
+            <div class="portfolio-box">
+                <img src="image/house1.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Web Desing </h4>
+                    <p>Coming Soon</p>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+             
+            <div class="portfolio-box">
+                <img src="image/house1.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Web Desing </h4>
+                    <p>Coming Soon</p>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+             
+            <div class="portfolio-box">
+                <img src="image/house1.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Web Desing </h4>
+                    <p>Coming Soon!</p>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        
+        </div>
+    </section>
+
+
+    <!-- form sections -->
+     <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me!</span></h2>
+
+        <form  id="contact-form">
+            <div class="input-box">
+                <input type="text" name="FullName" id="fullName" placeholder="Full Name" required  >
+                <input type="email" name="gmail" id="gmail" placeholder="example@gmail.com" required>
+            </div>
+
+             <div class="input-box">
+                <input type="number" name="number" id="number" placeholder="Mobile Number" required>
+                <input type="text" id="subject" placeholder="Eamil Subject">
+           <textarea name="massege"  cols="30" rows="10" id="message" placeholder="Your Masage"></textarea>
+            </div>   
+            <input type="submit" value="Send Message" class="btn">
+             </form>
+     </section>
+    
+
+     <!-- footer section  -->
+
+<footer class="lux-footer">
+  <div class="lux-footer-container">
+    
+    <!-- Brand Info -->
+    <div class="lux-footer-brand">
+      <h2 class="brand-title">Mk Hirenest</h2>
+      <p class="brand-text">
+        Crafting high-quality Web & Mobile Applications, blending creativity with performance. 
+        Trusted by businesses since 2025.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="lux-footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home">🏠 Home</a></li>
+        <li><a href="#services">💼 Services</a></li>
+        <li><a href="#portfolio">📂 Portfolio</a></li>
+        <li><a href="#contact">✉️ Contact</a></li>
+        <li><a href="terms.html">📜 Terms</a></li>
+        <li><a href="privacy.html">🔒 Privacy</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="lux-footer-contact">
+      <h3>Contact</h3>
+      <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+      <p><i class="fa-solid fa-envelope"></i> support@mkhirenest.com</p>
+      <p><i class="fa-solid fa-location-dot"></i> Kolkata, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="lux-footer-social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class="lux-footer-bottom">
+    <p>© 2025 Mk Hirenest | All Rights Reserved | Designed with ❤️</p>
+    <a href="#home" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+  </div>
+</footer>
+
+
+
+     <!-- scroll revell  -->
+     <script src="https://unpkg.com/scrollreveal"></script> 
+
+     <!-- typejs -->
+      <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
