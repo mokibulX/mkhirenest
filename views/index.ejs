@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mk Hirenest </title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!-- boxicons -->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -30,7 +30,9 @@
 
 </head>
 <body>
-    <!-- hedaer desing -->
+
+  <%- include("partials/header.ejs") %>
+    <!-- hedaer desing
      <header class="header">
         <a href="#" > <img class="logo" src="\image\logo.png" alt=""></a>
 
@@ -44,7 +46,7 @@
             <a href="#portfolio">Portfolio</a>
             <a href="#contact">Contact</a>
         </nav>
-     </header>
+     </header> -->
 
      <!-- home section desing  -->
 
@@ -245,22 +247,24 @@ Whether it’s code, design, or mobile innovation — I bring clarity, creativit
      </section>
     
 
-     <!-- footer section  -->
+     <%- include("partials/footer.ejs") %>
+
+     <!-- footer section 
 
 <footer class="lux-footer">
   <div class="lux-footer-container">
     
-    <!-- Brand Info -->
-    <div class="lux-footer-brand">
+    Brand Info -->
+    <!-- <div class="lux-footer-brand">
       <h2 class="brand-title">Mk Hirenest</h2>
       <p class="brand-text">
         Crafting high-quality Web & Mobile Applications, blending creativity with performance. 
         Trusted by businesses since 2025.
       </p>
-    </div>
+    </div> -->
 
     <!-- Quick Links -->
-    <div class="lux-footer-links">
+    <!-- <div class="lux-footer-links">
       <h3>Quick Links</h3>
       <ul>
         <li><a href="#home">🏠 Home</a></li>
@@ -270,18 +274,18 @@ Whether it’s code, design, or mobile innovation — I bring clarity, creativit
         <li><a href="terms.html">📜 Terms</a></li>
         <li><a href="privacy.html">🔒 Privacy</a></li>
       </ul>
-    </div>
+    </div> -->
 
     <!-- Contact Info -->
-    <div class="lux-footer-contact">
+    <!-- <div class="lux-footer-contact">
       <h3>Contact</h3>
       <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
       <p><i class="fa-solid fa-envelope"></i> support@mkhirenest.com</p>
       <p><i class="fa-solid fa-location-dot"></i> Kolkata, India</p>
-    </div>
+    </div> -->
 
     <!-- Social Media -->
-    <div class="lux-footer-social">
+    <!-- <div class="lux-footer-social">
       <h3>Follow Us</h3>
       <div class="social-icons">
         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -291,24 +295,24 @@ Whether it’s code, design, or mobile innovation — I bring clarity, creativit
       </div>
     </div>
 
-  </div>
+  </div> -->
 
   <!-- Bottom -->
-  <div class="lux-footer-bottom">
+  <!-- <div class="lux-footer-bottom">
     <p>© 2025 Mk Hirenest | All Rights Reserved | Designed with ❤️</p>
     <a href="#home" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
   </div>
-</footer>
+</footer> --> 
 
 
 
-     <!-- scroll revell  -->
+     <!-- scroll reveal  -->
      <script src="https://unpkg.com/scrollreveal"></script> 
 
      <!-- typejs -->
       <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
-    <script src="script.js"></script>
+    <script src="/js/script.js"></script>
 
 </body>
 </html>

@@ -1,9 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxury Products</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product</title>
+</head>
+<body>
+
+  <a href="/" class="back-home">🏠 Back to Home</a>
+
+<style>
+.back-home {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #0ef, #00bcd4);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 238, 255, 0.4);
+  transition: 0.3s;
+  align-items: center;
+}
+
+.back-home:hover {
+  background: linear-gradient(135deg, #00bcd4, #0ef);
+  color: #1f242d;
+  box-shadow: 0 6px 14px rgba(0, 238, 255, 0.6);
+  transform: translateY(-2px);
+}
+</style>
+
 
 <!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -45,9 +73,8 @@ h2{text-align:center;font-size:2.5rem;margin-bottom:2rem;color:var(--main);}
 @media(max-width:992px){.product-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:600px){.product-grid{grid-template-columns:1fr;}}
 </style>
-</head>
-<body>
 
+<body>
 <div class="container">
 <h2>Our Products</h2>
 <div class="product-grid" id="productGrid">
@@ -72,7 +99,6 @@ h2{text-align:center;font-size:2.5rem;margin-bottom:2rem;color:var(--main);}
 
 <script>
 const products = [
-  // Web Apps
   {title:"Web Dashboard", desc:"Responsive web dashboard with analytics & charts.", price:12000, icon:"fa-laptop-code"},
   {title:"E-commerce Web", desc:"Full shopping platform with payment integration.", price:15000, icon:"fa-shop"},
   {title:"Blog Website", desc:"SEO-friendly blog website with CMS & modern design.", price:10000, icon:"fa-blog"},
@@ -83,7 +109,6 @@ const products = [
   {title:"Real Estate Web", desc:"Property listings, filters, and inquiry forms.", price:16000, icon:"fa-building"},
   {title:"Restaurant Web", desc:"Food ordering and menu showcase website.", price:13000, icon:"fa-utensils"},
   {title:"Event Website", desc:"Event showcase with registration & ticketing.", price:12500, icon:"fa-calendar-day"},
-  // Mobile Apps
   {title:"Task Manager App", desc:"Cross-platform app for tasks & reminders.", price:18000, icon:"fa-android"},
   {title:"iOS Fitness App", desc:"Track workouts, diet, and progress.", price:20000, icon:"fa-apple"},
   {title:"Chat App", desc:"Real-time messaging with media sharing.", price:22000, icon:"fa-comment"},
@@ -108,7 +133,7 @@ products.forEach((p)=>{
   grid.appendChild(card);
 });
 
-// Modal functionality
+// Modal
 const modal = document.getElementById("orderModal");
 const closeModal = document.getElementById("closeModal");
 document.querySelectorAll(".order-btn").forEach((btn,index)=>{
@@ -178,5 +203,8 @@ document.getElementById("payNowBtn").addEventListener("click",()=>{
 });
 </script>
 
+
+
+  
 </body>
 </html>

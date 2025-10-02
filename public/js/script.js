@@ -1,4 +1,3 @@
-// const { send } = require("vite");
 
 /* ========================toggle icon nav bar ================================*/
 let menuIcon = document.querySelector("#menu-icon");

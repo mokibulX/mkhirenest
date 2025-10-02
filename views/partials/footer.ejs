@@ -1,0 +1,202 @@
+<!-- ================= FOOTER ================= -->
+<footer class="lux-footer">
+  <div class="lux-footer-container">
+    
+    <!-- Brand -->
+    <div class="lux-footer-brand">
+      <h2 class="brand-title">Mk Hirenest</h2>
+      <p class="brand-text">
+        Crafting high-quality Web & Mobile Applications, blending creativity with performance. 
+        Trusted by businesses since 2025.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="lux-footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home">🏠 Home</a></li>
+        <li><a href="#services">💼 Services</a></li>
+        <li><a href="#portfolio">📂 Portfolio</a></li>
+        <li><a href="#contact">✉️ Contact</a></li>
+        <li><a href="/terms">📜 Terms</a></li>
+        <li><a href="/privacy">🔒 Privacy</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="lux-footer-contact">
+      <h3>Contact</h3>
+      <p><i class="fa-solid fa-phone"></i> +91 6003923163</p>
+      <p><i class="fa-solid fa-envelope"></i> support@mkhirenest.com</p>
+      <p><i class="fa-solid fa-location-dot"></i> assam, India</p>
+    </div>
+
+    <!-- Social -->
+    <div class="lux-footer-social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class="lux-footer-bottom">
+    <p>© 2025 Mk Hirenest | All Rights Reserved | Designed with ❤️</p>
+    <a href="/" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+  </div>
+
+  <!-- ================= FOOTER CSS ================= -->
+  <style>
+    .lux-footer {
+      background: linear-gradient(135deg, #0a0f1f, #1c1f2b, #0e1a25);
+      color: #fff;
+      padding: 4rem 9%;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+    }
+
+    .lux-footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 3rem;
+    }
+
+    .brand-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0ef;
+      margin-bottom: 1rem;
+    }
+
+    .brand-text {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .lux-footer-links h3,
+    .lux-footer-contact h3,
+    .lux-footer-social h3 {
+      font-size: 1.8rem;
+      color: #0ef;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #0ef;
+      display: inline-block;
+      padding-bottom: 0.4rem;
+    }
+
+    .lux-footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .lux-footer-links ul li {
+      margin: 0.8rem 0;
+    }
+
+    .lux-footer-links ul li a {
+      color: #ddd;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .lux-footer-links ul li a:hover {
+      color: #0ef;
+      padding-left: 5px;
+    }
+
+    .lux-footer-contact p {
+      font-size: 1.5rem;
+      margin: 0.6rem 0;
+      color: #ccc;
+    }
+
+    .lux-footer-contact i {
+      margin-right: 0.6rem;
+      color: #0ef;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      background: #0ef;
+      color: #0a0f1f;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #fff;
+      color: #0ef;
+      transform: scale(1.2);
+    }
+
+    .lux-footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 1.4rem;
+      color: #bbb;
+      position: relative;
+    }
+
+    .back-to-top {
+      position: absolute;
+      right: 9%;
+      top: -2.5rem;
+      background: #0ef;
+      color: #0a0f1f;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .back-to-top:hover {
+      background: #fff;
+      color: #0ef;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .lux-footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .back-to-top {
+        right: 50%;
+        transform: translateX(50%);
+      }
+    }
+  </style>
+
+  <!-- ================= FOOTER JS ================= -->
+  <script>
+    // Scroll to top
+    document.querySelector('.back-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</footer>

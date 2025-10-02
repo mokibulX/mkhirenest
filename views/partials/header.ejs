@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Header</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css">
+
+  <style>
+    /* ================= RESET ================= */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    a{text-decoration:none;color:inherit;}
+    ul{list-style:none;}
+
+    /* ================= HEADER ================= */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.8rem 9%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg,#0a0f1f,#1c1f2b);
+      z-index: 1000;
+      box-shadow:0 0 1rem rgba(0,0,0,0.5);
+      transition:0.3s;
+      height: 80px;
+    }
+    .header.sticky {backdrop-filter: blur(8px);border-bottom:0.2rem solid #0ef;}
+    .logo {width: 10%; height:auto; cursor: default;}
+
+    /* ================= NAVBAR ================= */
+    .navbar {display:flex; align-items:center; gap:3rem;}
+    .navbar a {
+      color:#fff; font-size:1.2rem; font-weight:500; position:relative;
+      transition:0.3s;
+    }
+    .navbar a::after {
+      content:""; position:absolute; left:0; bottom:-5px; width:0; height:2px; background:#0ef; transition:0.3s;
+    }
+    .navbar a:hover::after, .navbar a.active::after {width:100%;}
+
+    /* ================= MENU ICON ================= */
+    #menu-icon {display:none; font-size:2.8rem; color:#0ef; cursor:pointer;}
+
+    /* ================= MAIN CONTENT ================= */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 2rem 3rem; /* padding-top = header height + extra space */
+    }
+
+    h2 {
+      text-align:center; font-size:2.5rem; margin-bottom:2rem; color:#0ef;
+    }
+
+    /* ================= PRODUCT GRID ================= */
+    .product-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:2rem;
+    }
+
+    .card {
+      background:#323946; color:#fff; padding:1.8rem; border-radius:1.2rem;
+      display:flex; flex-direction:column; align-items:center; box-shadow:0 0 1rem rgba(0,0,0,0.5);
+      transition:0.3s;
+    }
+    .card:hover {transform:scale(1.05); box-shadow:0 0 1.5rem #0ef;}
+    .card i {font-size:3rem; color:#0ef; margin-bottom:1rem;}
+    .card h3 {margin-bottom:0.8rem;text-align:center;}
+    .card p {text-align:center;font-size:0.95rem;margin-bottom:1rem;}
+    .card strong {font-size:1.1rem;margin-bottom:1rem;}
+    .card button {padding:0.6rem 1rem; border:none; border-radius:50px; background:#0ef; color:#1f242d; cursor:pointer; transition:0.3s;}
+    .card button:hover {background:#0bf; color:#fff;}
+
+    /* ================= RESPONSIVE ================= */
+    @media(max-width:992px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:600px){.product-grid{grid-template-columns:1fr;}}
+    @media(max-width:768px){
+      #menu-icon {display:block;}
+      .navbar {
+        position:absolute; top:100%; left:0; width:100%;
+        flex-direction:column; background:linear-gradient(135deg,#0a0f1f,#1c1f2b);
+        padding:2rem 5%; display:none; gap:2rem; border-top:0.1rem solid rgba(0,0,0,0.2);
+      }
+      .navbar.active {display:flex;}
+      .navbar a{font-size:2rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <div><img src="/image/logo.png" class="logo" alt="Logo"></div>
+    <i class='bx bx-menu' id="menu-icon"></i>
+    <nav class="navbar">
+      <a href="/" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="/product">Products</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+
+  <!-- ================= HEADER JS ================= -->
+  <script>
+    const menuIcon = document.getElementById('menu-icon');
+    const navbar = document.querySelector('.navbar');
+
+    menuIcon.addEventListener('click', () => {
+      navbar.classList.toggle('active');
+      menuIcon.classList.toggle('bx-x');
+    });
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      header.classList.toggle('sticky', window.scrollY > 50);
+    });
+  </script>
+
+</body>
+</html>
+
+<br><br><br>

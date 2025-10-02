@@ -1,12 +1,14 @@
-// Load environment variables
 require("dotenv").config();
-
 const express = require("express");
 const path = require("path");
 const nodemailer = require("nodemailer");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Set EJS as template engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 // Middleware
 app.use(express.static(path.join(__dirname, "public")));
@@ -15,14 +17,30 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.render("index");
 });
 
 app.get("/product", (req, res) => {
-  res.sendFile(path.join(__dirname, "product.html"));
+  res.render("product");
 });
+///privacy
+app.get("/privacy", (req, res) => {
+  res.render("privacy");
+});
+//// terms
+app.get("/terms", (req, res) => {
+  res.render("terms");
+});
+
 app.get("/aboutme", (req, res) => {
-  res.sendFile(path.join(__dirname, "aboutme.html"));
+  res.render("aboutme");
+});
+
+
+
+/////evry root
+app.get('', (req, res) => {
+  res.redirect('/');
 });
 
 // Nodemailer transporter
