@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product</title>
-</head>
-<body>
+<include file="partials/header.ejs" />
 
   <a href="/" class="back-home">🏠 Back to Home</a>
 
@@ -40,7 +33,8 @@
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // পরিবর্তন করুন আপনার Public Key
+
+emailjs.init("EMAILJS_PUBLIC_KEY"); // পরিবর্তন করুন আপনার Public Key
 </script>
 
 <style>
@@ -178,15 +172,15 @@ document.getElementById("payNowBtn").addEventListener("click",()=>{
 
   if(!name||!email){alert("Fill name & email"); return;}
 
-  var options = {
-    "key": "YOUR_RAZORPAY_KEY", 
+   options = {
+    "key": "RAZORPAY_KEY_ID", 
     "amount": price*100, 
     "currency": "INR",
     "name": title,
     "description": details,
     "handler": function (response){
       alert("Payment successful! ID: " + response.razorpay_payment_id);
-      emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+      emailjs.send("EMAILJS_PUBLIC_KEY","EMAILJS_SERVICE_ID","EMAILJS_TEMPLATE_ID",{
         sendName:name,
         sendEmail:email,
         sendTitle:title,
@@ -202,9 +196,4 @@ document.getElementById("payNowBtn").addEventListener("click",()=>{
   rzp1.open();
 });
 </script>
-
-
-
-  
-</body>
 </html>

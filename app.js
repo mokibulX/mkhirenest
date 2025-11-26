@@ -57,7 +57,7 @@ app.post("/order", (req, res) => {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER, // নিজেই notification পাবেন
+    to: process.env.EMAIL_USER, 
     subject: `New Order: ${product}`,
     html: `
       <h2>New Order Received</h2>
@@ -71,10 +71,10 @@ app.post("/order", (req, res) => {
 
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
-      console.log("❌ Email sending error:", err);
+      console.log(" Email sending error:", err);
       return res.status(500).json({ success: false, message: "Failed to send email" });
     } else {
-      console.log("📩 Email sent:", info.response);
+      console.log(" Email sent:", info.response);
       return res.json({ success: true, message: "Order received and email sent" });
     }
   });

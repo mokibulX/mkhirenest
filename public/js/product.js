@@ -1,3 +1,6 @@
+
+
+
 emailjs.init("EMAILJS_PUBLIC_KEY");
 
 const orderButtons = document.querySelectorAll(".order-btn");
@@ -17,7 +20,7 @@ orderButtons.forEach(btn => {
 
         // Razorpay Payment
         const options = {
-            key: "YOUR_RAZORPAY_KEY",
+            key: "YORAZORPAY_KEY_ID",
             amount: price * 100, // in paise
             currency: "INR",
             name: "MK Hirenest",

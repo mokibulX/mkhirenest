@@ -1,6 +1,6 @@
 
 /* ========================toggle icon nav bar ================================*/
-let menuIcon = document.querySelector("#menu-icon");
+// let menuIcon = document.querySelector("#menu-icon");
 let navbar = document.querySelector(".navbar");
 
 menuIcon.onclick = () => {
@@ -74,7 +74,8 @@ window.onscroll = () => {
 
 /* ======================== email js ================================*/
 
- emailjs.init("yheYxKkwMWxmrgP3");  // আপনার EmailJS পাবলিক কী দিয়ে প্রতিস্থাপন করুন
+ emailjs.init("yheYxKkwMWxmrgP3");  
+
 
 function sendMessage() {
     const serviceId = "alom_123";
@@ -106,20 +107,7 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
 });
 
 
-// ==================== button toggling ================
 
-// function redMore() {
-//     window.location.href ="/aboutme";
-// }
-// function redMoreGraf() {
-//     window.location.href ="/aboutme#graphic";
-// }
-// function redMoreWeb() {
-//     window.location.href ="/aboutme#web";
-// }
-// function redMoreapps() {
-//     window.location.href ="/aboutme#apps";
-// }
 
 
 
