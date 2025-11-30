@@ -37,8 +37,6 @@ app.get("/aboutme", (req, res) => {
   res.render("aboutme");
 });
 
-
-
 /////evry root
 app.get('', (req, res) => res.redirect('/'));
 

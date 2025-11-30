@@ -20,7 +20,7 @@ orderButtons.forEach(btn => {
 
         // Razorpay Payment
         const options = {
-            key: "YORAZORPAY_KEY_ID",
+            key: "RAZORPAY_KEY_ID",
             amount: price * 100, // in paise
             currency: "INR",
             name: "MK Hirenest",
@@ -29,7 +29,7 @@ orderButtons.forEach(btn => {
                 alert("Payment Successful. Thank You!");
 
                 // EmailJS send
-                emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                emailjs.send("EMAILJS_SERVICE_ID", "EMAILJS_TEMPLATE_ID", {
                     sendName: name,
                     sendEmail: email,
                     sendTitle: title,

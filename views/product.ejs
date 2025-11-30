@@ -1,30 +1,6 @@
-<include file="partials/header.ejs" />
 
-  <a href="/" class="back-home">🏠 Back to Home</a>
 
-<style>
-.back-home {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 20px;
-  background: linear-gradient(135deg, #0ef, #00bcd4);
-  color: #fff;
-  font-weight: 600;
-  border-radius: 50px;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 238, 255, 0.4);
-  transition: 0.3s;
-  align-items: center;
-}
-
-.back-home:hover {
-  background: linear-gradient(135deg, #00bcd4, #0ef);
-  color: #1f242d;
-  box-shadow: 0 6px 14px rgba(0, 238, 255, 0.6);
-  transform: translateY(-2px);
-}
-</style>
-
+ <%- include("partials/header.ejs") %>
 
 <!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -68,7 +44,7 @@ h2{text-align:center;font-size:2.5rem;margin-bottom:2rem;color:var(--main);}
 @media(max-width:600px){.product-grid{grid-template-columns:1fr;}}
 </style>
 
-<body>
+
 <div class="container">
 <h2>Our Products</h2>
 <div class="product-grid" id="productGrid">
@@ -150,7 +126,7 @@ document.getElementById("payLaterBtn").addEventListener("click",()=>{
 
   if(!name||!email){alert("Fill name & email"); return;}
 
-  emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+  emailjs.send("EMAILJS_SERVICE_ID","EMAILJS_TEMPLATE_ID",{
     sendName:name,
     sendEmail:email,
     sendTitle:title,
@@ -196,4 +172,4 @@ document.getElementById("payNowBtn").addEventListener("click",()=>{
   rzp1.open();
 });
 </script>
-</html>
+     <%- include("partials/footer.ejs") %>
