@@ -20,10 +20,13 @@ app.get("/", (req, res) => {
   res.render("index", { emailJsKey: process.env.EMAILJS_PUBLIC_KEY });
 });
 
-
 app.get("/product", (req, res) => {
-  res.render("product");
+  res.render("product", {
+    emailJsKey: process.env.EMAILJS_PUBLIC_KEY,
+    razorpayKeyId: process.env.RAZORPAY_KEY_ID
+  });
 });
+
 ///privacy
 app.get("/privacy", (req, res) => {
   res.render("privacy");

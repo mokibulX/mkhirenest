@@ -1,17 +1,10 @@
-
-
- <%- include("partials/header.ejs") %>
+<%- include("partials/header.ejs") %>
 
 <!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <!-- Razorpay -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-
-emailjs.init("<%= emailJsKey %>"); 
-</script>
 
 <style>
 :root {
@@ -33,7 +26,6 @@ h2{text-align:center;font-size:2.5rem;margin-bottom:2rem;color:var(--main);}
 .card strong{font-size:1.1rem;margin-bottom:1rem;}
 .card button{padding:0.6rem 1rem;border:none;border-radius:50px;background:var(--main);color:var(--bg);cursor:pointer;transition:0.3s;}
 .card button:hover{background:#0bf;color:#fff;}
-/* Modal */
 #orderModal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:none;justify-content:center;align-items:center;z-index:999;}
 .modal-content{background:var(--card-bg);padding:2rem;border-radius:1rem;width:90%;max-width:500px;position:relative;}
 .modal-content h3{text-align:center;margin-bottom:1rem;color:var(--main);}
@@ -44,12 +36,9 @@ h2{text-align:center;font-size:2.5rem;margin-bottom:2rem;color:var(--main);}
 @media(max-width:600px){.product-grid{grid-template-columns:1fr;}}
 </style>
 
-
 <div class="container">
 <h2>Our Products</h2>
-<div class="product-grid" id="productGrid">
-<!-- Product cards will be injected here -->
-</div>
+<div class="product-grid" id="productGrid"></div>
 </div>
 
 <!-- Modal -->
@@ -68,6 +57,9 @@ h2{text-align:center;font-size:2.5rem;margin-bottom:2rem;color:var(--main);}
 </div>
 
 <script>
+/* -------------------------
+   PRODUCT LIST
+-------------------------- */
 const products = [
   {title:"Web Dashboard", desc:"Responsive web dashboard with analytics & charts.", price:12000, icon:"fa-laptop-code"},
   {title:"E-commerce Web", desc:"Full shopping platform with payment integration.", price:15000, icon:"fa-shop"},
@@ -103,9 +95,12 @@ products.forEach((p)=>{
   grid.appendChild(card);
 });
 
-// Modal
+/* -------------------------
+   MODAL
+-------------------------- */
 const modal = document.getElementById("orderModal");
 const closeModal = document.getElementById("closeModal");
+
 document.querySelectorAll(".order-btn").forEach((btn,index)=>{
   btn.addEventListener("click",()=>{
     const product = products[index];
@@ -114,10 +109,33 @@ document.querySelectorAll(".order-btn").forEach((btn,index)=>{
     modal.style.display="flex";
   });
 });
+
 closeModal.onclick = ()=> modal.style.display="none";
 
-// Pay Later via EmailJS
+
+
+/* -------------------------
+   SEND ORDER TO BACKEND
+-------------------------- */
+function sendOrder(name, email, title, price, details) {
+  return fetch("/order", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name,
+      email,
+      product: title,
+      price,
+      message: details
+    })
+  }).then(res => res.json());
+}
+
+/* -------------------------
+   PAY LATER
+-------------------------- */
 document.getElementById("payLaterBtn").addEventListener("click",()=>{
+
   const name=document.getElementById("customerName").value;
   const email=document.getElementById("customerEmail").value;
   const title=document.getElementById("formTitle").value;
@@ -126,20 +144,24 @@ document.getElementById("payLaterBtn").addEventListener("click",()=>{
 
   if(!name||!email){alert("Fill name & email"); return;}
 
-  emailjs.send("service_abc123","template_xyz456",{
-    sendName:name,
-    sendEmail:email,
-    sendTitle:title,
-    sendPrice:price,
-    sendDetails:details
-  }).then(res=>{
-    alert("Order received! You can pay later. Details sent via EmailJS.");
+  sendOrder(name,email,title,price,details)
+  .then(() => {
+    alert("Order placed successfully! We will contact you soon.");
     modal.style.display="none";
-  }).catch(err=>{alert("Failed to send order.");console.error(err);});
+    window.location.href="/";
+  })
+  .catch(err => {
+    alert("Error sending order.");
+    console.error(err);
+  });
 });
 
-// Pay Now via Razorpay
+
+/* -------------------------
+   PAY NOW (RAZORPAY)
+-------------------------- */
 document.getElementById("payNowBtn").addEventListener("click",()=>{
+
   const name=document.getElementById("customerName").value;
   const email=document.getElementById("customerEmail").value;
   const title=document.getElementById("formTitle").value;
@@ -148,28 +170,36 @@ document.getElementById("payNowBtn").addEventListener("click",()=>{
 
   if(!name||!email){alert("Fill name & email"); return;}
 
-   options = {
-    "key": "RAZORPAY_KEY_ID", 
-    "amount": price*100, 
+  let options = {
+    "key": "<%= razorpayKeyId %>",
+    "amount": price * 100,
     "currency": "INR",
     "name": title,
     "description": details,
+
     "handler": function (response){
-      alert("Payment successful! ID: " + response.razorpay_payment_id);
-      emailjs.send("yheYxKkwMWxmrgP3","rvice_abc123","template_xyz456",{
-        sendName:name,
-        sendEmail:email,
-        sendTitle:title,
-        sendPrice:price,
-        sendDetails:details+"\nPayment ID:"+response.razorpay_payment_id
+
+      const paymentDetails =
+        details + "\nPayment ID: " + response.razorpay_payment_id;
+
+      sendOrder(name,email,title,price,paymentDetails)
+      .then(() => {
+        alert("Payment successful! Order saved.");
+        modal.style.display="none";
+        window.location.href="/";
+      })
+      .catch(err => {
+        alert("Error saving order.");
+        console.error(err);
       });
-      modal.style.display="none";
     },
-    "prefill":{"name":name,"email":email},
-    "theme":{"color":"#0ef"}
+
+    "prefill": {name,email},
+    "theme": {"color":"#0ef"}
   };
-  var rzp1 = new Razorpay(options);
-  rzp1.open();
+
+  new Razorpay(options).open();
 });
 </script>
-     <%- include("partials/footer.ejs") %>
+
+<%- include("partials/footer.ejs") %>
