@@ -126,7 +126,7 @@ document.getElementById("payLaterBtn").addEventListener("click",()=>{
 
   if(!name||!email){alert("Fill name & email"); return;}
 
-  emailjs.send("EMAILJS_SERVICE_ID","EMAILJS_TEMPLATE_ID",{
+  emailjs.send("service_abc123","template_xyz456",{
     sendName:name,
     sendEmail:email,
     sendTitle:title,
@@ -156,7 +156,7 @@ document.getElementById("payNowBtn").addEventListener("click",()=>{
     "description": details,
     "handler": function (response){
       alert("Payment successful! ID: " + response.razorpay_payment_id);
-      emailjs.send("EMAILJS_PUBLIC_KEY","EMAILJS_SERVICE_ID","EMAILJS_TEMPLATE_ID",{
+      emailjs.send("yheYxKkwMWxmrgP3","rvice_abc123","template_xyz456",{
         sendName:name,
         sendEmail:email,
         sendTitle:title,
